@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-textalert-dev-93414-authRole",
+            "UnauthRoleArn": "arn:aws:iam::243986368154:role/amplify-textalert-dev-93414-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::243986368154:role/amplify-textalert-dev-93414-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-textalert-dev-93414-deployment",
+            "UnauthRoleName": "amplify-textalert-dev-93414-unauthRole",
+            "StackName": "amplify-textalert-dev-93414",
+            "StackId": "arn:aws:cloudformation:us-east-1:243986368154:stack/amplify-textalert-dev-93414/19404be0-ea0d-11ea-994a-0ad23187ddb2",
+            "AmplifyAppId": "d3q97qty4d4wjp"
+        }
+    }
+}

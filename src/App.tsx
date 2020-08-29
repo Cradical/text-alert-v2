@@ -1,23 +1,16 @@
 import React from 'react'
-import logo from './logo.svg'
+
+import MainPage from 'views/MainPage'
+
 import './App.css'
 
 function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          <code>Built with Amplify</code>
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'>
-          React w/ typescript v2
-        </a>
+        <h1>Welcome to Text Alert</h1>
       </header>
+      <MainPage />
     </div>
   )
 }
