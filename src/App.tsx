@@ -21,10 +21,10 @@ function App() {
   return authState === AuthState.SignedIn && user ? (
     <div className='App'>
       <header className='App-header'>
+        <AmplifySignOut />
         <h1>Welcome to Text Alert</h1>
       </header>
       <MainPage />
-      <AmplifySignOut />
     </div>
   ) : (
     <ManagedAuthenticator />

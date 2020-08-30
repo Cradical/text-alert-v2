@@ -18,7 +18,7 @@
 		}
 	},
 	"auth": {
-		"textalert03564488": {
+		"textalert7580e517": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [],
