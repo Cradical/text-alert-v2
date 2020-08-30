@@ -11,10 +11,10 @@ const TextDisplay: React.FC = () => {
   const [texts, setTexts] = useState<Array<string>>([])
 
   useEffect(() => {
-    const fetchTexts = async () => {
-      const response = await API.graphql({ query: listText })
-      setTexts(response.data.listText.items)
-    }
+    // const fetchTexts = async () => {
+    //   const response = await API.graphql({ query: listText })
+    //   setTexts(response.data.listText.items)
+    // }
   })
 
   return <Container>display some texts</Container>
