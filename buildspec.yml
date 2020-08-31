@@ -21,9 +21,6 @@ phases:
     commands:
       - echo Building project...
       - yarn build
-  post_build:
-    commands:
-      - aws cloudfront create-invalidation --distribution-id E3G2IZT35N6Q9A --paths /index.html
 artifacts:
   files:
     - '**/*'
