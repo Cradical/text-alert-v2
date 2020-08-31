@@ -49,17 +49,14 @@ export default function TextWriter() {
       Subject: 'Text Alert',
       TopicArn: process.env.REACT_APP_TOPIC_ARN,
     }
-    // sns.publish(params, function (err, data) {
-    //   if (err) console.log(err, err.stack)
-    //   // an error occurred
-    //   else console.log(data) // successful response
-    // })
-
-    console.log('params: ', params)
+    sns.publish(params, function (err, data) {
+      if (err) console.log(err, err.stack)
+      // an error occurred
+      else console.log(data) // successful response
+    })
 
     setText('')
     setEmail('')
-    console.log('message to be sent: ', text)
   }
 
   return (
