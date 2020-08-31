@@ -1,9 +1,7 @@
 import React from 'react'
-
 import Typography from '@material-ui/core/Typography'
 
 import MainPage from 'views/MainPage'
-
 import logo from './logo.svg'
 import './App.css'
 

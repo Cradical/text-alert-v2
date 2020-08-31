@@ -5,6 +5,14 @@ import TextField from '@material-ui/core/TextField'
 
 import Btn from 'components/reusables/Button'
 
+AWS.config.update({
+  region: 'us-east-1',
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY,
+  secretAccessKey: process.env.REACT_APP_SECRET_KEY,
+})
+
+const sns = new AWS.SNS()
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -13,16 +21,11 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: '25ch',
     },
+    [theme.breakpoints.down('md')]: {
+      flexWrap: 'wrap',
+    },
   },
 }))
-
-AWS.config.update({
-  region: 'us-east-1',
-  accessKeyId: process.env.REACT_APP_ACCESS_KEY,
-  secretAccessKey: process.env.REACT_APP_SECRET_KEY,
-})
-
-const sns = new AWS.SNS()
 
 export default function TextWriter() {
   const [text, setText] = useState<string>('')
@@ -44,19 +47,23 @@ export default function TextWriter() {
   const onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
 
-    const params = {
-      Message: `message: ${text}, email: ${email} `,
-      Subject: 'Text Alert',
-      TopicArn: process.env.REACT_APP_TOPIC_ARN,
-    }
-    sns.publish(params, function (err, data) {
-      if (err) console.log(err, err.stack)
-      // an error occurred
-      else console.log(data) // successful response
-    })
+    if (text === '') alert('Please, add a small message before sending!')
+    else {
+      const params = {
+        Message: `message: ${text}, email: ${email} `,
+        Subject: 'Text Alert',
+        TopicArn: process.env.REACT_APP_TOPIC_ARN,
+      }
 
-    setText('')
-    setEmail('')
+      sns.publish(params, function (err, data) {
+        if (err) console.log(err, err.stack)
+        // an error occurred
+        else console.log(data) // successful response
+      })
+
+      setText('')
+      setEmail('')
+    }
   }
 
   return (
