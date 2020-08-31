@@ -15,7 +15,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Btn: React.FC<{ label: string }> = ({ label }) => {
+const Btn: React.FC<{
+  label: string
+  onClick: any
+}> = ({ label, onClick }) => {
   const classes = useStyles()
 
   return (
@@ -24,8 +27,9 @@ const Btn: React.FC<{ label: string }> = ({ label }) => {
         variant='contained'
         color='primary'
         className={classes.button}
-        endIcon={<SendIcon />}>
-        Send
+        endIcon={<SendIcon />}
+        onClick={onClick}>
+        {label}
       </Button>
     </div>
   )

@@ -25,29 +25,40 @@ AWS.config.update({
 const sns = new AWS.SNS()
 
 export default function TextWriter() {
-  const [text, captureText] = useState<string>('')
+  const [text, setText] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
   const classes = useStyles()
 
   const captureTextMessage = (
     event: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    captureText(event.currentTarget.value)
+    setText(event.currentTarget.value)
+  }
+
+  const setEmailAddress = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setEmail(event.currentTarget.value)
   }
 
   const onSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
 
     const params = {
-      Message: text,
+      Message: `message: ${text}, email: ${email} `,
       Subject: 'Text Alert',
       TopicArn: process.env.REACT_APP_TOPIC_ARN,
     }
-    sns.publish(params, function (err, data) {
-      if (err) console.log(err, err.stack)
-      // an error occurred
-      else console.log(data) // successful response
-    })
+    // sns.publish(params, function (err, data) {
+    //   if (err) console.log(err, err.stack)
+    //   // an error occurred
+    //   else console.log(data) // successful response
+    // })
 
+    console.log('params: ', params)
+
+    setText('')
+    setEmail('')
     console.log('message to be sent: ', text)
   }
 
@@ -59,10 +70,17 @@ export default function TextWriter() {
       onSubmit={onSubmit}>
       <TextField
         id='standard-basic'
-        label='Text Generator'
+        label='Text Message'
         onChange={captureTextMessage}
+        value={text}
       />
-      <Btn label='Send Message' />
+      <TextField
+        id='standard-basic'
+        label='Email'
+        onChange={setEmailAddress}
+        value={email}
+      />
+      <Btn label='Send Message' onClick={onSubmit} />
     </form>
   )
 }
