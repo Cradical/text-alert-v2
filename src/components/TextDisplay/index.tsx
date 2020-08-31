@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Container from '@material-ui/core/Container'
 import { API } from 'aws-amplify'
 // import { makeStyles } from '@material-ui/core/styles'
@@ -8,14 +8,7 @@ import { API } from 'aws-amplify'
 // }))
 
 const TextDisplay: React.FC = () => {
-  const [texts, setTexts] = useState<Array<string>>([])
-
-  useEffect(() => {
-    // const fetchTexts = async () => {
-    //   const response = await API.graphql({ query: listText })
-    //   setTexts(response.data.listText.items)
-    // }
-  })
+  // const [texts, setTexts] = useState<Array<string>>([])
 
   return <Container>display some texts</Container>
 }

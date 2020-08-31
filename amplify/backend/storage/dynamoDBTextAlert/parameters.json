@@ -1,7 +1,0 @@
-{
-    "tableName": "dynamoDBTextAlert",
-    "partitionKeyName": "User",
-    "partitionKeyType": "S",
-    "sortKeyName": "Texts",
-    "sortKeyType": "S"
-}

@@ -1,0 +1,31 @@
+version: 0.2
+os: Ubuntu
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12.x
+    commands:
+      - echo Installing Node 12...
+      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+      - apt install -y nodejs
+      - echo Installing Yarn pkg manager...
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+      - apt update && apt install --no-install-recommends yarn
+  pre_build:
+    commands:
+      - echo Installing dependencies...
+      - yarn install
+  build:
+    commands:
+      - echo Building project...
+      - yarn build
+  post_build:
+    commands:
+      - aws cloudfront create-invalidation --distribution-id E3G2IZT35N6Q9A --paths /index.html
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
+  base-directory: build

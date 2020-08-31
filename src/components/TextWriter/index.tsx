@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import AWS from 'aws-sdk'
-import awsmobile from '../../aws-exports'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 
@@ -18,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 AWS.config.update({
-  region: awsmobile.aws_cognito_region,
+  region: 'us-east-1',
   accessKeyId: process.env.REACT_APP_ACCESS_KEY,
   secretAccessKey: process.env.REACT_APP_SECRET_KEY,
 })
