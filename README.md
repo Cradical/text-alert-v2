@@ -11,3 +11,13 @@ If it wasn't obvious enough with the swirling React icon at the top, you might h
 - The client is communicating with Amazon's Simple Notification Service (SNS) which is a pub/sub messaging service. The client is the publisher and my mobile device is subscribed to the Text Alert Topic which is registered in SNS.
 - The app is hosted as a static website using Amazon's Simple Storage Service (S3). There is a lot of cool things you can do with buckets but since this app is so small that is the best configuration for the job.
 - The deployment process is fully automated using AWS Code Pipeline which listens to my gitHub repo for changes to the master branch. Once a change is detected, AWS will clone the latest version of the repo, run an installation processes to require any dependencies, run the build procedure and then copy all the optimized files to the S3 which makes the small app accessible at this [endpoint](http://text-alert.s3-website-us-east-1.amazonaws.com)
+
+### Get Started Locally:
+
+```bash
+  git clone https://github.com/Cradical/text-alert-v2.git
+  cd text-alert-v2
+  yarn start
+```
+
+_NOTE: You will need to create your own AWS account and replace the env variables for this to work properly for you locally._
